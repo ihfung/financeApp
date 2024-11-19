@@ -1,10 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import { Link } from 'expo-router';
 
 export default function HomeScreen() {
   return (
     <View style={styles.container}>
-      <Text>Home Screen</Text>
+      <Text>Allocations</Text>
+      <Link href="/accounts">Go to accounts</Link>
       <StatusBar style="auto" />
     </View>
   );

@@ -5,7 +5,7 @@ import { Link } from 'expo-router';
 export default function HomeScreen() {
   return (
     <View style={styles.container}>
-      <Text>Allocations</Text>
+      <Text>Move Money</Text>
       <Link href="/accounts">Go to accounts</Link>
       <StatusBar style="auto" />
     </View>

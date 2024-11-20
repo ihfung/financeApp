@@ -5,7 +5,8 @@ import {Stack} from 'expo-router';
 export default function newMoveMoneyScreen() {
   return (
     <View>
-       <Stack.Screen options={{title: 'Transfer Money'}} /> //creates a header at the top of the screen
+      {/* //creates a header at the top of the screen */}
+       <Stack.Screen options={{title: 'Transfer Money'}} /> 
       <Text>transfer to which account</Text>
     </View>
   )

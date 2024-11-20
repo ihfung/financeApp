@@ -4,7 +4,8 @@ import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 
 export default function RootLayout() {
   return (
-    <Tabs> //creates tab bar at the bottom of the screen
+    //creates tab bar at the bottom of the screen
+    <Tabs> 
       <Tabs.Screen 
         name="moveMoney" 
         options={{ 
@@ -26,7 +27,8 @@ export default function RootLayout() {
               size={size}  
               color="color" />}} 
       />
-      <Tabs.Screen name='index' options={{href: null}}/>  //removes the index tab at the bottom of the tab bar
+       {/* //removes the index tab at the bottom of the tab bar */}
+      <Tabs.Screen name='index' options={{href: null}}/> 
     </Tabs>
   );
 }

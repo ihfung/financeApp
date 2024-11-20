@@ -5,9 +5,12 @@ import { Link, Stack } from 'expo-router';
 export default function moveMoneyHomeScreen() {
   return (
     <View style={styles.container}>
-      <Stack.Screen options={{title: 'Move Money'}} /> //creates a header at the top of the screen
+      {/* //creates a header at the top of the screen */}
+      <Stack.Screen options={{title: 'Move Money'}} /> 
       <Text>Move Money</Text>
-      <Link href="/moveMoney/new">Transfer Between My Accounts</Link> //creates a link to the transfer money screen
+       {/* //creates a link to the transfer money screen */}
+      <Link href="/moveMoney/new">Transfer Between My Accounts</Link> 
+     
       <StatusBar style="auto" />
     </View>
   );

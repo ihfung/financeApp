@@ -6,7 +6,7 @@ import {useState} from 'react';
 
 export default function AccountsScreen() {
 
-  const [name, setName] = useState('');
+  const [name, setName] = useState(''); //useState is a hook that allows you to have state variables in functional components so name is the state variable and setName is the function that will be called when the state variable changes for example user changes text but the initial state is an empty string which is useState('')
   const [cap, setCap] = useState('');
   const [tap, setTap] = useState('');
 
@@ -24,15 +24,15 @@ export default function AccountsScreen() {
     <AccountsList />
 
     <View style={styles.inputRow}>
-      {/* //value is the value of the input where it will be stored and onChangeText is the function that will be called when the text changes */}
+      {/* //value is the value of the input where it will be stored and onChangeText is the function that will be called when the text changes by the user*/}
       <TextInput value={name} onChangeText={setName} placeholder="Name" style={styles.input}/> 
       <TextInput value={cap} onChangeText={setCap} placeholder="CAP %" style={styles.input}/>
       <TextInput value={tap} onChangeText={setTap} placeholder="TAP %"style={styles.input}/>
       {/* <Feather name="check" size={20} color="blue" /> */}
 
     </View>
-
-    <Button title='Add account' onPress={createAccount}/>
+    {/* //when the button is pressed the createAccount function is called */}
+    <Button title='Add account' onPress={createAccount}/> 
 
     </View>
   )

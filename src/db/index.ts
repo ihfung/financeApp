@@ -23,7 +23,7 @@ const adapter = new SQLiteAdapter({
   onSetUpError: error => {
     // Database failed to load -- offer the user to reload the app or log out
   }
-})
+});
 
 // Then, make a Watermelon database from it!
 const database = new Database({
@@ -33,7 +33,7 @@ const database = new Database({
     Account,
 
   ],
-})
+});
 
 export default database;
 

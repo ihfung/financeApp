@@ -1,13 +1,15 @@
 import { View, Text, StyleSheet, Button, TextInput } from "react-native";
 import AccountListItem from "../components/AccountListItem";
+import database, {accountsCollection} from '../db'
 import AccountsList from "../components/AccountsList";
 import Feather from '@expo/vector-icons/Feather';
 import {useState} from 'react';
-import database, {accountsCollection} from '../db'
+
 
 
 export default function AccountsScreen() {
 
+  console.log("AccountsScreen component loaded");
   const [name, setName] = useState(''); //useState is a hook that allows you to have state variables in functional components so name is the state variable and setName is the function that will be called when the state variable changes for example user changes text but the initial state is an empty string which is useState('')
   const [cap, setCap] = useState('');
   const [tap, setTap] = useState('');
@@ -55,7 +57,7 @@ export default function AccountsScreen() {
 
     </View>
   )
-}
+};
 
 
 const styles = StyleSheet.create({
@@ -76,3 +78,4 @@ const styles = StyleSheet.create({
   }
 
 });
+

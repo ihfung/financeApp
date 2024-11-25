@@ -1,11 +1,19 @@
 import {View, Text, StyleSheet} from 'react-native';  
+import Account from '../model/Account';
 
-export default function AccountListItem(){
+// we are going to create a new type called AccountListItem which is going to have an account of type Account
+type AccountListItem = {
+  account: Account;
+}
+
+// we are going to create a new function called AccountListItem which is going to take an account of type AccountListItem and return a JSX.Element(React component)
+export default function AccountListItem({account}: AccountListItem){
   return (
+    // so here we are going to display the account name, cap and tap because AccountListItem is linked to Account model 
     <View style={styles.container}>
-      <Text style={styles.name}>Profit</Text>
-      <Text style={styles.percentage}>10% </Text>
-      <Text style={styles.percentage}>20% </Text>
+      <Text style={styles.name}>{account.name}</Text>
+      <Text style={styles.percentage}>{account.cap} </Text>
+      <Text style={styles.percentage}>{account.tap} </Text>
     </View>
   )
 }

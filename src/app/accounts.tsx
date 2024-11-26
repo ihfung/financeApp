@@ -29,6 +29,19 @@ export default function AccountsScreen() {
     setCap('');
     setTap('');
   };
+  
+  // //this function is going to update the specific account in the database example the first account in the database
+  // //making it update instantaneously when button is pressed
+  // const onTest = async () => {
+  //   await database.write(async () => {
+  //     const accounts = await accountsCollection.query().fetch();
+  //     const account = accounts[0];
+  //     account.update(updatedAccount => {
+  //       updatedAccount.name = 'Le sserafim';
+
+  //     })
+  //   });
+  // };
 
   return (
     <View style={{gap: 5, padding: 6}}>
@@ -49,7 +62,7 @@ export default function AccountsScreen() {
     </View>
     {/* //when the button is pressed the createAccount function is called */}
     <Button title='Add account' onPress={createAccount}/> 
-
+    {/* <Button  title='test update' onPress={onTest}/> */}
     </View>
   )
 };

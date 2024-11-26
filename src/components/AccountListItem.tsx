@@ -30,7 +30,7 @@ function AccountListItem({account}: AccountListItem){
       <Text style={styles.name}>{account.name}</Text>
       <Text style={styles.percentage}>{account.cap} </Text>
       <Text style={styles.percentage}>{account.tap} </Text>
-      <MaterialIcons name="delete" size={18} color="red" onPress={onDelete}/>
+      <MaterialIcons name="delete" size={19} color="red" onPress={onDelete}/>
     </View>
   )
 }

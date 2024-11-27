@@ -8,12 +8,13 @@ import migrations from './migrations';
 
 // import Post from './model/Post' // ⬅️ You'll import your Models here
 import Account from '../model/Account';
+import MoveMoney from '../model/moveMoney';
 
 // First, create the adapter to the underlying database:
 const adapter = new SQLiteAdapter({
   schema,
   // (You might want to comment it out for development purposes -- see Migrations documentation)
-  migrations,
+  //migrations,
   // (optional database name or file system path)
   // dbName: 'myapp',
   // (recommended option, should work flawlessly out of the box on iOS. On Android,
@@ -31,6 +32,7 @@ const database = new Database({
   modelClasses: [
     // Post, // ⬅️ You'll add Models to Watermelon here
     Account,
+    MoveMoney
 
   ],
 });
@@ -38,3 +40,5 @@ const database = new Database({
 export default database;
 
 export const accountsCollection = database.get<Account>('accounts'); //this is the accounts table in the database and <Account> is the type of data that is being fetched from the database account table
+
+export const moveMoneyCollection = database.get<MoveMoney>('moveMoney');

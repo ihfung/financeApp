@@ -1,7 +1,7 @@
 import { appSchema, tableSchema } from '@nozbe/watermelondb'
 
 export default appSchema({
-  version: 1,
+  version: 2,
   tables: [
     // We'll add tableSchemas here later
     tableSchema({
@@ -10,6 +10,13 @@ export default appSchema({
         { name: 'name', type: 'string' },
         { name: 'cap', type: 'number' },
         { name: 'tap', type: 'number' },
+      ]
+    }),
+    tableSchema({
+      name: 'moveMoney',
+      columns: [
+        { name: 'created_at', type: 'number' },
+        { name: 'money', type: 'number' },
       ]
     }),
   ]

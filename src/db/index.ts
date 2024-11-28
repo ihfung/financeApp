@@ -41,4 +41,4 @@ export default database;
 
 export const accountsCollection = database.get<Account>('accounts'); //this is the accounts table in the database and <Account> is the type of data that is being fetched from the database account table
 
-export const moveMoneyCollection = database.get<MoveMoney>('moveMoney');
+export const moveMoneyCollection = database.get<MoveMoney>('moveMoneys');

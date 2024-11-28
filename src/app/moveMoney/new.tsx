@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import {Stack} from 'expo-router';
+import {Stack, router} from 'expo-router';
 import { View, Text, StyleSheet, TextInput, Button } from "react-native";
 import database, {moveMoneyCollection} from '../../db';
 
@@ -8,13 +8,20 @@ import database, {moveMoneyCollection} from '../../db';
 export default function newMoveMoneyScreen() {
 
   const [money, setMoney] = useState('');
-
+  //this function is called when the transfer button is clicked
+  //and it creates a new moveMoney record in the database
   const transfer = async () => {
     await database.write( async () => {
         moveMoneyCollection.create(newMoveMoney => {
           newMoveMoney.money = Number.parseFloat(money);
         })
     })
+
+    //clear the money input field
+    setMoney('');
+
+    //go back to the previous screen when the transfer button is clicked
+    router.back();
   };
 
   return (

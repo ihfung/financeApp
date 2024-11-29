@@ -8,7 +8,6 @@ A lightning-fast finance app built with **React Native**, leveraging the power o
 - **Local-First Database**: Ensures your data stays on your device, offering high performance and enhanced privacy.
 - **Expense Tracking**: Easily track and categorize expenses.
 - **Clean, User-Friendly Interface**: Navigate seamlessly through a simple and intuitive UI.
-- **Sync Across Devices**: Option to sync data securely across devices.
 
 ---
 
@@ -19,9 +18,9 @@ Follow this guide to set up the FinanceApp on your local environment. Perfect fo
 ---
 
 ## Technologies Used
-- **React Native** (for app development)
-- **Expo** (to streamline setup and development)
-- **WatermelonDB** (a high-performance, scalable local database)
+- **React Native** 
+- **Expo** 
+- **WatermelonDB** 
 
 ---
 

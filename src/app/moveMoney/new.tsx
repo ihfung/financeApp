@@ -2,12 +2,13 @@
 import { useState } from "react";
 import {Stack, router} from 'expo-router';
 import { View, Text, StyleSheet, TextInput, Button } from "react-native";
-import database, {moveMoneyCollection} from '../../db';
+import database, {accountsCollection, moveMoneyCollection} from '../../db';
+import { withObservables } from "@nozbe/watermelondb/react";
+import Account from "../../model/Account";
 
+function newMoveMoneyScreen({accounts}: {accounts:Account[]}) {
 
-export default function newMoveMoneyScreen() {
-
-  const [money, setMoney] = useState('');
+  const [money, setMoney] = useState('0');
   //this function is called when the transfer button is clicked
   //and it creates a new moveMoney record in the database
   const transfer = async () => {
@@ -37,10 +38,28 @@ export default function newMoveMoneyScreen() {
                 style={styles.input}
             />
        </View>
+       {accounts.map((account) => (
+          <View key={account.id} style={styles.inputRow}> 
+            <Text style={{flex: 1}}>
+              {account.name}: {account.cap}
+            </Text>
+            <Text>
+              ${(Number.parseFloat(money) * account.cap) / 100}
+            </Text>
+          </View>
+       ))}
       <Button title="Transfer" onPress={transfer} />
     </View>
   )
 }
+
+
+const enhance = withObservables([], () => ({
+   accounts: accountsCollection.query(),
+}));
+
+
+export default enhance(newMoveMoneyScreen);
 
 const styles = StyleSheet.create({
   container: {

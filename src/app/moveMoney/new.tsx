@@ -5,6 +5,7 @@ import { View, Text, StyleSheet, TextInput, Button } from "react-native";
 import database, {accountsCollection, moveMoneyCollection} from '../../db';
 import { withObservables } from "@nozbe/watermelondb/react";
 import Account from "../../model/Account";
+import moveMoney from "../../model/moveMoney";
 
 function newMoveMoneyScreen({accounts}: {accounts:Account[]}) {
 
@@ -15,9 +16,10 @@ function newMoveMoneyScreen({accounts}: {accounts:Account[]}) {
     await database.write( async () => {
         moveMoneyCollection.create(newMoveMoney => {
           newMoveMoney.money = Number.parseFloat(money);
-        })
-    })
-
+        });
+      
+    });
+    // moveMoney.create(Number.parseFloat(money))
     //clear the money input field
     setMoney('');
 

@@ -2,7 +2,7 @@
 import { useState } from "react";
 import {Stack, router} from 'expo-router';
 import { View, Text, StyleSheet, TextInput, Button } from "react-native";
-import database, {accountsCollection, moveMoneyCollection} from '../../db';
+import database, {accountsCollection, moveMoneyCollection, accountMoveMoneyCollection} from '../../db';
 import { withObservables } from "@nozbe/watermelondb/react";
 import Account from "../../model/Account";
 import moveMoney from "../../model/moveMoney";
@@ -14,10 +14,18 @@ function newMoveMoneyScreen({accounts}: {accounts:Account[]}) {
   //and it creates a new moveMoney record in the database
   const transfer = async () => {
     await database.write( async () => {
-        moveMoneyCollection.create(newMoveMoney => {
+       const moveMoney = await moveMoneyCollection.create(newMoveMoney => {
           newMoveMoney.money = Number.parseFloat(money);
         });
-      
+
+    await Promise.all(accounts.map(account => 
+      accountMoveMoneyCollection.create(item => {
+        item.account.set(account);
+        item.moveMoney.set(moveMoney);
+        item.cap = account.cap;
+        item.amount = (moveMoney.money * account.cap) / 100
+      })));
+
     });
     // moveMoney.create(Number.parseFloat(money))
     //clear the money input field

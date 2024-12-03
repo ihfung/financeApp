@@ -1,9 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { Link, Stack } from 'expo-router';
 import MoneyList from '../../components/moneyList';
 
+
 export default function moveMoneyHomeScreen() {
+
+  
+
+
   return (
     <View style={styles.container}>
       {/* //creates a header at the top of the screen */}

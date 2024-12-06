@@ -1,5 +1,5 @@
 import { Model } from '@nozbe/watermelondb'
-import { field, text, readonly, date, immutableRelation } from '@nozbe/watermelondb/decorators'
+import { field, text, readonly, date, immutableRelation, nochange } from '@nozbe/watermelondb/decorators'
 
 export default class AccountMoveMoney extends Model {
   static table = 'accounts_moveMoneys';
@@ -13,9 +13,11 @@ export default class AccountMoveMoney extends Model {
    @readonly @date('created_at') createdAt: Date;
    @field('cap') cap: number;
    @field('amount') amount: number;
+   @nochange @field('user_id') userId: string;
 
    //this is linking the account and moveMoney tables to the accounts_moveMoneys table
    @immutableRelation('accounts', 'account_id') account;
    @immutableRelation('moveMoneys', 'moveMoney_id') moveMoney;
 
+   
 }

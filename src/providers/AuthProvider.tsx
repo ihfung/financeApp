@@ -36,6 +36,10 @@ export default function AuthProvider({ children }: PropsWithChildren) {
     });
   }, []);
 
+  //console.log(session.user);
+
+
+
   return (
     <AuthContext.Provider
       value={{

@@ -6,16 +6,21 @@ import database, {accountsCollection, moveMoneyCollection, accountMoveMoneyColle
 import { withObservables } from "@nozbe/watermelondb/react";
 import Account from "../../../model/Account";
 import moveMoney from "../../../model/moveMoney";
+import { useAuth } from "../../../providers/AuthProvider";
 
 function newMoveMoneyScreen({accounts}: {accounts:Account[]}) {
 
   const [money, setMoney] = useState('0');
+
+  const {user} = useAuth();
+
   //this function is called when the transfer button is clicked
   //and it creates a new moveMoney record in the database
   const transfer = async () => {
     await database.write( async () => {
        const moveMoney = await moveMoneyCollection.create(newMoveMoney => {
           newMoveMoney.money = Number.parseFloat(money);
+          newMoveMoney.userId = user?.id;
         });
 
     await Promise.all(accounts.map(account => 
@@ -24,6 +29,7 @@ function newMoveMoneyScreen({accounts}: {accounts:Account[]}) {
         item.moveMoney.set(moveMoney);
         item.cap = account.cap;
         item.amount = (moveMoney.money * account.cap) / 100
+        item.userId = user?.id;
       })));
 
     });

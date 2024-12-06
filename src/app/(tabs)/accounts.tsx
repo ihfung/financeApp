@@ -4,6 +4,7 @@ import database, {accountsCollection} from '../../db'
 import AccountsList from "../../components/AccountsList";
 import Feather from '@expo/vector-icons/Feather';
 import {useState} from 'react';
+import {useAuth} from '../../providers/AuthProvider';
 
 
 
@@ -14,6 +15,8 @@ export default function AccountsScreen() {
   const [cap, setCap] = useState('');
   const [tap, setTap] = useState('');
 
+  const {user} = useAuth(); //useAuth is a custom hook that allows you to access the user object from the auth context
+
   const createAccount = async() => {
     // console.warn('create account' , name); //a pop up message that appears in the console
     await database.write(async () => { //database.write is a transaction that allows you to read and write data from the database
@@ -22,6 +25,7 @@ export default function AccountsScreen() {
         account.name = name;
         account.cap = Number.parseFloat(cap);
         account.tap = Number.parseFloat(tap);
+        account.userId = user?.id; // ? means it could be null
       });
     });
     //clear the input fields after the account has been created

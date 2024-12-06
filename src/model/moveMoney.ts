@@ -1,5 +1,5 @@
 import { Model } from '@nozbe/watermelondb';
-import { field, readonly, date, children } from '@nozbe/watermelondb/decorators';
+import { field, readonly, date, children, nochange } from '@nozbe/watermelondb/decorators';
 import moveMoneyCollection from '../db';
 
 export default class moveMoneys extends Model {
@@ -11,11 +11,10 @@ export default class moveMoneys extends Model {
 
   @field('money') money: number;
   @readonly @date('created_at') createdAt: Date;
+  @nochange @field('user_id') userId: string;
+
+
   @children('accounts_moveMoneys') accountMoveMoneys;
  
-  // @writer static async create(money: number) {
-  //     return await moveMoneyCollection.create((newMoveMoney) => {
-  //     newMoveMoney.money = money;
-  //   });
-  // }
+  
 }

@@ -18,7 +18,7 @@ const MoneyListItem = ({moveMoney, accountMoveMoneys }: MoneyListItem) => {
       <View style={styles.header}>
         <Text style={styles.date}>{moveMoney.createdAt.toLocaleDateString()}</Text>
         <Text style={styles.money}> ${moveMoney.money}</Text>
-        <Text>{accountMoveMoneys.length}</Text>
+        {/* <Text>{accountMoveMoneys.length}</Text> */}
       </View>
      <View style={{gap: 5, paddingVertical: 5}}>
       {

@@ -11,6 +11,9 @@ export default class moveMoneys extends Model {
 
   @field('money') money: number;
   @readonly @date('created_at') createdAt: Date;
+  @readonly @date('updated_at') updatedAt: Date;
+
+
   @nochange @field('user_id') userId: string;
 
 

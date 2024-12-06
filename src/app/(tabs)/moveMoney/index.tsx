@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import { Link, Stack } from 'expo-router';
-import MoneyList from '../../components/moneyList';
+import MoneyList from '../../../components/moneyList';
 
 
 export default function moveMoneyHomeScreen() {

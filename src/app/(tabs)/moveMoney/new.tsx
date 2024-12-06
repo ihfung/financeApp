@@ -2,10 +2,10 @@
 import { useState } from "react";
 import {Stack, router} from 'expo-router';
 import { View, Text, StyleSheet, TextInput, Button } from "react-native";
-import database, {accountsCollection, moveMoneyCollection, accountMoveMoneyCollection} from '../../db';
+import database, {accountsCollection, moveMoneyCollection, accountMoveMoneyCollection} from '../../../db';
 import { withObservables } from "@nozbe/watermelondb/react";
-import Account from "../../model/Account";
-import moveMoney from "../../model/moveMoney";
+import Account from "../../../model/Account";
+import moveMoney from "../../../model/moveMoney";
 
 function newMoveMoneyScreen({accounts}: {accounts:Account[]}) {
 

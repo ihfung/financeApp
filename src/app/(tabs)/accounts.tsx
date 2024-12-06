@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet, Button, TextInput } from "react-native";
-import AccountListItem from "../components/AccountListItem";
-import database, {accountsCollection} from '../db'
-import AccountsList from "../components/AccountsList";
+import AccountListItem from "../../components/AccountListItem";
+import database, {accountsCollection} from '../../db'
+import AccountsList from "../../components/AccountsList";
 import Feather from '@expo/vector-icons/Feather';
 import {useState} from 'react';
 

@@ -1,7 +1,9 @@
-import { Platform } from 'react-native'
-import { Database } from '@nozbe/watermelondb'
-import SQLiteAdapter from '@nozbe/watermelondb/adapters/sqlite'
-
+import { Platform } from 'react-native';
+import { Database } from '@nozbe/watermelondb';
+import SQLiteAdapter from '@nozbe/watermelondb/adapters/sqlite';
+import { setGenerator } from '@nozbe/watermelondb/utils/common/randomId'; 
+import * as Crypto from 'expo-crypto';
+ 
 
 import schema from './schema';
 import migrations from './migrations';
@@ -10,6 +12,8 @@ import migrations from './migrations';
 import Account from '../model/Account';
 import MoveMoney from '../model/moveMoney';
 import AccountMoveMoney from '../model/AccountMoveMoney';
+
+setGenerator(() => Crypto.randomUUID());
 
 // First, create the adapter to the underlying database:
 const adapter = new SQLiteAdapter({

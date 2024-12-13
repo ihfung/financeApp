@@ -1,7 +1,8 @@
 import { Redirect, Slot, Stack, Tabs} from 'expo-router';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
-import {useAuth} from '../../providers/AuthProvider'
+import {useAuth} from '../../providers/AuthProvider';
+
 
 export default function TabsLayout() {
 
@@ -20,10 +21,12 @@ export default function TabsLayout() {
           title: 'Move Money', 
           headerShown: false, 
           tabBarIcon: ({size, color})=> 
-            <MaterialIcons 
+            (<MaterialIcons 
               name="attach-money" 
               size={size} 
-              color="color" />}} 
+              color="color" 
+            />),
+          }} 
       />
       <Tabs.Screen 
         name="accounts" 

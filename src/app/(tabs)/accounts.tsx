@@ -51,8 +51,8 @@ export default function AccountsScreen() {
     <View style={{gap: 5, padding: 6}}>
       <View style={styles.header}> 
         <Text>Name</Text>
-        <Text>Cap</Text>
-        <Text>Tap</Text>
+        <Text style={{marginRight: 25}}>Cap</Text>
+        <Text style={{marginRight: 115}}>Tap</Text>
       </View>
     <AccountsList />
 
@@ -76,7 +76,9 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    padding: 10
+    padding: 10,
+   
+    
   },
   inputRow:{
     flexDirection: 'row',

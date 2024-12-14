@@ -7,6 +7,7 @@ import { withObservables } from "@nozbe/watermelondb/react";
 import Account from "../../../model/Account";
 import moveMoney from "../../../model/moveMoney";
 import { useAuth } from "../../../providers/AuthProvider";
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 
 function newMoveMoneyScreen({accounts}: {accounts:Account[]}) {
 
@@ -41,9 +42,18 @@ function newMoveMoneyScreen({accounts}: {accounts:Account[]}) {
     router.back();
   };
 
+
+  const backReturn = () => {
+    router.back();
+  }
+
   return (
     <View style={styles.container}>
       {/* //creates a header at the top of the screen */}
+      <Stack.Screen options={{title: 'Back',
+          headerLeft: () => 
+                (<MaterialIcons name="arrow-back-ios" size={24} color="black" onPress={backReturn} style={{marginLeft: -5}}/>),
+      }} /> 
        <Stack.Screen options={{title: 'Transfer Money'}} /> 
        <View style={styles.inputRow}>
             <Text style={styles.label}>Amount</Text>

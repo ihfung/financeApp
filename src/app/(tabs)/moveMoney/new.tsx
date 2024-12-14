@@ -43,7 +43,7 @@ function newMoveMoneyScreen({accounts}: {accounts:Account[]}) {
   };
 
 
-  const backReturn = () => {
+  const backReturn = async () => {
     router.back();
   }
 

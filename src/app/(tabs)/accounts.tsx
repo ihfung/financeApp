@@ -119,6 +119,7 @@ const styles = StyleSheet.create({
   },
   input:{
       flex: 1, //all share the exact amount of space
+      textAlign: 'center',
       
   }
 

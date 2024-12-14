@@ -5,6 +5,10 @@ import AccountsList from "../../components/AccountsList";
 import Feather from '@expo/vector-icons/Feather';
 import {useState} from 'react';
 import {useAuth} from '../../providers/AuthProvider';
+import { Redirect, Stack } from "expo-router";
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import { supabase } from "../../lib/supabase";
+
 
 
 
@@ -33,6 +37,18 @@ export default function AccountsScreen() {
     setCap('');
     setTap('');
   };
+
+  const logout = async () => {
+    // console.warn('logout');
+    const {error} = await supabase.auth.signOut();
+    if (!error) {
+      return <Redirect href={"/login"} />
+    } else {
+      console.error('Logout error', error.message);
+    }
+    //navigate to the login screen
+   
+};
   
   // //this function is going to update the specific account in the database example the first account in the database
   // //making it update instantaneously when button is pressed
@@ -48,7 +64,15 @@ export default function AccountsScreen() {
   // };
 
   return (
+    
     <View style={{gap: 5, padding: 6}}>
+
+      <Stack.Screen options={{title: 'Accounts',
+        headerRight: () => 
+              (<MaterialIcons name="logout" size={20} color="black" onPress={logout} style={{marginRight: 10}}/>),
+      }} /> 
+
+
       <View style={styles.header}> 
         <Text>Name</Text>
         <Text style={{marginRight: 25}}>Cap</Text>
@@ -92,4 +116,3 @@ const styles = StyleSheet.create({
   }
 
 });
-

@@ -9,18 +9,18 @@ import  * as Crypto from 'expo-crypto';
 
 export default function moveMoneyHomeScreen() {
 
-  const test = async () => {
-    const result = await supabase.rpc('create_account', {
-      _id: Crypto.randomUUID(),
-      _user_id: Crypto.randomUUID(),
-      _name: 'test',
-      _cap: 100.0,
-      _tap: 200.0,
-      _created_at: new Date().toISOString(),
-      _updated_at: new Date().toISOString()
-    });
-    console.log(result);  
-  }
+  // const test = async () => {
+  //   const result = await supabase.rpc('create_account', {
+  //     _id: Crypto.randomUUID(),
+  //     _user_id: Crypto.randomUUID(),
+  //     _name: 'test',
+  //     _cap: 100.0,
+  //     _tap: 200.0,
+  //     _created_at: new Date().toISOString(),
+  //     _updated_at: new Date().toISOString()
+  //   });
+  //   console.log(result);  
+  // }
 
 
   return (
@@ -30,7 +30,7 @@ export default function moveMoneyHomeScreen() {
         headerRight: () => 
               (<Ionicons name="refresh" size={20} color="black" onPress={mySync}/>),
       }} /> 
-      <Button title="Test" onPress={test} />
+      {/* <Button title="Test" onPress={test} /> */}
        {/* //creates a link to the transfer money screen */}
       <Link 
         href="/moveMoney/new" asChild>

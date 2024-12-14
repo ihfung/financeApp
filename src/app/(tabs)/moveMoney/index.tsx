@@ -1,11 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
 import { Button, StyleSheet, Text, View } from 'react-native';
-import { Link, Stack } from 'expo-router';
+import { Link, Redirect, Stack } from 'expo-router';
 import MoneyList from '../../../components/moneyList';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { mySync } from '../../../db/sync';
 import { supabase } from '../../../lib/supabase';
 import  * as Crypto from 'expo-crypto';
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 
 export default function moveMoneyHomeScreen() {
 
@@ -22,13 +23,23 @@ export default function moveMoneyHomeScreen() {
   //   console.log(result);  
   // }
 
+  const logout = async () => {
+      // console.warn('logout');
+      const {error} = await supabase.auth.signOut();
+      if (!error) {
+        return <Redirect href={"/login"} />
+      } else {
+        console.error('Logout error', error.message);
+      }
+     
+  };
 
   return (
     <View style={styles.container}>
       {/* //creates a header at the top of the screen */}
       <Stack.Screen options={{title: 'Move Money',
-        headerRight: () => 
-              (<Ionicons name="refresh" size={20} color="black" onPress={mySync}/>),
+         headerRight: () => 
+              (<MaterialIcons name="logout" size={20} color="black" onPress={logout} style={{marginRight: -5}}/>),
       }} /> 
       {/* <Button title="Test" onPress={test} /> */}
        {/* //creates a link to the transfer money screen */}

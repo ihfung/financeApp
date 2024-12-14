@@ -4,7 +4,7 @@ import { withObservables } from '@nozbe/watermelondb/react';
 import { accountsCollection } from '../db';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import database from '../db';
-
+import { mySync } from "../db/sync";
 
 // we are going to create a new type called AccountListItem which is going to have an account of type Account
 type AccountListItem = {
@@ -24,13 +24,19 @@ function AccountListItem({account}: AccountListItem){
    
   }
 
+  const DeleteSync = async () => {
+    await onDelete();
+    await mySync();
+  };
+
+
   return (
     // so here we are going to display the account name, cap and tap because AccountListItem is linked to Account model 
     <View style={styles.container}>
       <Text style={styles.name}>{account.name}</Text>
       <Text style={styles.percentage}>{account.cap} </Text>
       <Text style={styles.percentage}>{account.tap} </Text>
-      <MaterialIcons name="delete" size={19} color="red" onPress={onDelete}/>
+      <MaterialIcons name="delete" size={19} color="red" onPress={DeleteSync}/>
     </View>
   )
 }
@@ -57,9 +63,11 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 16,
     flex: 1
+  
   },
   percentage: {
-    flex: 1
+    flex: 1,
+    textAlign: 'left',
   }
 
 });

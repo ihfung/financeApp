@@ -8,6 +8,7 @@ import {useAuth} from '../../providers/AuthProvider';
 import { Redirect, Stack } from "expo-router";
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { supabase } from "../../lib/supabase";
+import { mySync } from "../../db/sync";
 
 
 
@@ -46,10 +47,15 @@ export default function AccountsScreen() {
     } else {
       console.error('Logout error', error.message);
     }
-    //navigate to the login screen
+   
    
 };
   
+const AddAccountSync = async () => {
+  await createAccount();
+  await mySync();
+
+};
   // //this function is going to update the specific account in the database example the first account in the database
   // //making it update instantaneously when button is pressed
   // const onTest = async () => {
@@ -89,7 +95,7 @@ export default function AccountsScreen() {
 
     </View>
     {/* //when the button is pressed the createAccount function is called */}
-    <Button title='Add account' onPress={createAccount}/> 
+    <Button title='Add account' onPress={AddAccountSync}/> 
     {/* <Button  title='test update' onPress={onTest}/> */}
     </View>
   )
@@ -109,10 +115,11 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     padding: 10,
     backgroundColor: 'white',
+    
   },
   input:{
-    flex: 1, //all share the exact amount of space
-
+      flex: 1, //all share the exact amount of space
+      
   }
 
 });

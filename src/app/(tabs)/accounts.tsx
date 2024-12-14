@@ -81,7 +81,7 @@ const AddAccountSync = async () => {
 
       <View style={styles.header}> 
         <Text>Name</Text>
-        <Text style={{marginRight: 25}}>Cap</Text>
+        <Text style={{marginRight: 15}}>Cap</Text>
         <Text style={{marginRight: 115}}>Tap</Text>
       </View>
     <AccountsList />
